@@ -1,4 +1,4 @@
-package life.qbic.openbis
+package life.qbic.serviceconnectors
 
 import ch.ethz.sis.openbis.generic.asapi.v3.IApplicationServerApi
 import ch.systemsx.cisd.common.spring.HttpInvokerUtils
