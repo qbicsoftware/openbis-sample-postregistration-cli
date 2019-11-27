@@ -37,3 +37,5 @@ You have to provide a property file, that has to contain the following fields:
     "lastSearchDate": "2019-10-10"
 }
 ```
+
+The application currently tries to automatically update the `lastSearchDate` property, so it needs to have write permissions. 
