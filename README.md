@@ -10,3 +10,30 @@ Created by Sven Fillinger (sven.fillinger@qbic.uni-tuebingen.de).
 ## Description
 
 ## How to Install
+
+Download the application and run it with:
+
+```
+> java -jar sample-status-updater-cli.jar -h
+Usage: OpenBIS status updater [-hv] -c=<config>
+Command-line utility to...
+  -c, --config=<config>   Property file in JSON to run the sample status updater.
+  -h, --help              Prints usage and exists.
+  -v, --version           Prints version and exits.
+
+
+```
+
+You have to provide a property file, that has to contain the following fields:
+
+```
+{
+    "openbisAsUrl": "https://base/url",
+    "openbisUser": "theuser",
+    "openbisPw": "thepassword", 
+    "serviceRegistryUrl": "http://test-registry.local:8500/v1",
+    "serviceUser": "serviceUserName",
+    "serviceUserPw": "theservicepassword",
+    "lastSearchDate": "2019-10-10"
+}
+```

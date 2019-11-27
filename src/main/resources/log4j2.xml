@@ -16,7 +16,7 @@
     <Loggers>
         <Root level="ALL">
             <AppenderRef ref="SysOut" level="INFO"/>
-            <AppenderRef ref="AppLog" level="ALL"/>
+            <AppenderRef ref="AppLog" level="DEBUG"/>
         </Root>
     </Loggers>
 </Configuration>
