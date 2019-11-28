@@ -22,7 +22,7 @@ class SampleTrackingConnector implements SampleTrackingService {
     @Override
     def updateSample(String sampleCode, Location location) throws SampleUpdateException{
         HttpClient client = RxHttpClient.create(service.rootUrl)
-        HttpRequest request = HttpRequest.POST("samples/$sampleCode/currentLocation/",
+        HttpRequest request = HttpRequest.POST("/samples/$sampleCode/currentLocation/",
                 location).basicAuth(credentials.name, credentials.pw)
         client.withCloseable {
             def response = it.toBlocking().exchange(request)
