@@ -1,8 +1,0 @@
-life/qbic/samplestatusupdater/search/SearchOutput.class
-life/qbic/samplestatusupdater/update/SampleUpdateException.class
-life/qbic/samplestatusupdater/search/FindNewOpenBisSamples.class
-life/qbic/samplestatusupdater/update/UpdateSampleStatusImpl.class
-life/qbic/samplestatusupdater/search/OpenBisSearch.class
-life/qbic/samplestatusupdater/update/UpdateSampleStatus.class
-life/qbic/samplestatusupdater/search/SearchInput.class
-life/qbic/samplestatusupdater/update/SampleTrackingService.class

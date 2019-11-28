@@ -6,9 +6,14 @@ import life.qbic.datamodel.services.Location;
 import cli.ParseProperties;
 import cli.SampleSearchPresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearch;
-import life.qbic.samplestatusupdater.serviceconnectors.*;
+import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
+import life.qbic.samplestatusupdater.serviceconnectors.OpenBisSession;
+import life.qbic.samplestatusupdater.serviceconnectors.SampleTrackingConnector;
+import life.qbic.samplestatusupdater.serviceconnectors.ServiceSearch;
+import life.qbic.samplestatusupdater.serviceconnectors.ServiceUserCredentials;
+import life.qbic.services.Service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,6 +22,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,7 +55,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
                                                     (String) properties.get("serviceUser"),
                                                     (String) properties.get("serviceUserPw"));
         URL serviceRegistry = createUrlFromString((String) properties.get("serviceRegistryUrl"));
-        /*List<Service> serviceList = ServiceSearch.findSampleTrackingService(serviceRegistry);
+        List<Service> serviceList = ServiceSearch.findSampleTrackingService(serviceRegistry);
 
         if (serviceList.isEmpty()) {
             LOG.error("Could not find any services for sample tracking!");
@@ -58,7 +64,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             LOG.info("Found at least one sample tracking service.");
         }
 
-        SampleTrackingConnector connector = new SampleTrackingConnector(serviceList.get(0), credentials);*/
+        SampleTrackingConnector connector = new SampleTrackingConnector(serviceList.get(0), credentials);
 
         OpenBisSearch search = new SampleSearchConnector(session.getApi(), session.getToken());
         Date lastSearchDate = parseDateFromStringWithPattern((String) properties.get("lastSearchDate"), "yyyy-MM-dd");
