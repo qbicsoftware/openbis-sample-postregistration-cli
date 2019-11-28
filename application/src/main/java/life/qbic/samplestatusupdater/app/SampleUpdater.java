@@ -8,7 +8,6 @@ import cli.SampleSearchPresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearch;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
-import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.serviceconnectors.OpenBisSession;
 import life.qbic.samplestatusupdater.serviceconnectors.SampleTrackingConnector;
 import life.qbic.samplestatusupdater.serviceconnectors.ServiceSearch;
