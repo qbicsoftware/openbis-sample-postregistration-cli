@@ -5,7 +5,7 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.RxHttpClient
 import life.qbic.datamodel.services.Location
-import life.qbic.samplestatusupdater.serviceconnectors.ServiceUserCredentials
+import life.qbic.samplestatusupdater.ServiceUserCredentials
 import life.qbic.services.Service
 
 class SampleTrackingConnector implements SampleTrackingService {

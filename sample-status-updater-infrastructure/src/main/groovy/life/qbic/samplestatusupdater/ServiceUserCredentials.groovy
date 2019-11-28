@@ -1,4 +1,4 @@
-package life.qbic.samplestatusupdater.serviceconnectors
+package life.qbic.samplestatusupdater
 
 class ServiceUserCredentials {
 

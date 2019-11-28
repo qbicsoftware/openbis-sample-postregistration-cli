@@ -1,4 +1,4 @@
-package life.qbic.samplestatusupdater.serviceconnectors
+package life.qbic.samplestatusupdater
 
 import life.qbic.services.ConsulServiceFactory
 import life.qbic.services.Service
