@@ -4,7 +4,7 @@ import ch.ethz.sis.openbis.generic.asapi.v3.dto.sample.fetchoptions.SampleFetchO
 import ch.ethz.sis.openbis.generic.asapi.v3.dto.sample.search.SampleSearchCriteria
 import ch.ethz.sis.openbis.generic.asapi.v3.IApplicationServerApi
 
-class SampleSearchConnector implements OpenBisSearch {
+class SampleSearchConnector implements OpenBisSearchService {
 
     IApplicationServerApi apiConnection
 

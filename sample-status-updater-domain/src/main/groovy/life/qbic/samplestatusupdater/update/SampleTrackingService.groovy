@@ -4,6 +4,6 @@ import life.qbic.datamodel.services.Location
 
 interface SampleTrackingService {
 
-    def updateSample(String sampleCode, Location location)
+    def updateSample(String sampleCode, Location location) throws SampleUpdateException
 
 }

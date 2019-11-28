@@ -1,17 +1,19 @@
 package life.qbic.samplestatusupdater.app;
 
+import cli.SampleUpdatePresenter;
 import life.qbic.cli.QBiCTool;
-import life.qbic.datamodel.services.Address;
-import life.qbic.datamodel.services.Location;
 import cli.ParseProperties;
-import cli.SampleSearchPresenter;
-import life.qbic.samplestatusupdater.search.OpenBisSearch;
+import life.qbic.samplestatusupdater.UseCaseConnector;
+import life.qbic.samplestatusupdater.search.OpenBisSearchService;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
 import life.qbic.samplestatusupdater.serviceconnectors.OpenBisSession;
-import life.qbic.samplestatusupdater.serviceconnectors.SampleTrackingConnector;
 import life.qbic.samplestatusupdater.serviceconnectors.ServiceSearch;
 import life.qbic.samplestatusupdater.serviceconnectors.ServiceUserCredentials;
+import life.qbic.samplestatusupdater.update.SampleTrackingConnector;
+import life.qbic.samplestatusupdater.update.SampleTrackingService;
+import life.qbic.samplestatusupdater.update.UpdateSampleStatus;
+import life.qbic.samplestatusupdater.update.UpdateSampleStatusImpl;
 import life.qbic.services.Service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,14 +65,16 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             LOG.info("Found at least one sample tracking service.");
         }
 
-        SampleTrackingConnector connector = new SampleTrackingConnector(serviceList.get(0), credentials);
+        SampleTrackingService sampleTrackingService = new SampleTrackingConnector(serviceList.get(0), credentials);
 
-        OpenBisSearch search = new SampleSearchConnector(session.getApi(), session.getToken());
+        OpenBisSearchService searchService = new SampleSearchConnector(session.getApi(), session.getToken());
         Date lastSearchDate = parseDateFromStringWithPattern((String) properties.get("lastSearchDate"), "yyyy-MM-dd");
 
-        SampleSearchPresenter presenter = new SampleSearchPresenter();
+        SampleUpdatePresenter updatePresenter = new SampleUpdatePresenter();
 
-        final FindNewOpenBisSamples findNewOpenBisSamples = new FindNewOpenBisSamples(search, presenter);
+        final UpdateSampleStatus updateSampleStatus = new UpdateSampleStatusImpl(sampleTrackingService, updatePresenter);
+        UseCaseConnector useCaseConnector = new UseCaseConnector(updateSampleStatus);
+        final FindNewOpenBisSamples findNewOpenBisSamples = new FindNewOpenBisSamples(searchService, useCaseConnector);
         findNewOpenBisSamples.searchNewSamplesSince(lastSearchDate);
 
     }
@@ -93,20 +97,6 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             LOG.error("Could not parse date from date String " + date);
         }
         return lastSearchDate;
-    }
-
-    Location createQBiCLocation(){
-        Location location = new Location();
-        Address address = new Address();
-        address.setStreet("Auf der Morgenstelle 10");
-
-        location.address(address);
-        location.arrivalDate(new Date());
-        location.name("QBiC DataStore");
-        location.responsiblePerson("QBiC team");
-        location.responsibleEmail("support@qbic.zendesk.com");
-
-        return location;
     }
 
     // TODO: override the shutdown() method if you are implementing a daemon and want to take advantage of a shutdown hook for clean-up tasks

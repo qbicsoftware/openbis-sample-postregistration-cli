@@ -7,18 +7,23 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
 
     SampleTrackingService service
 
-    UpdateSampleStatusImpl(SampleTrackingService service){
+    UpdateOutput output
+
+    UpdateSampleStatusImpl(SampleTrackingService service, UpdateOutput output){
         this.service = service
+        this.output = output
     }
 
     @Override
-    def update(String sampleCode, Location location, Status status) throws SampleUpdateException{
+    def update(String sampleCode, Location location, Status status) {
         Location updatedLocation = updateLocationStatus(location, status)
         try {
             service.updateSample(sampleCode, updatedLocation)
-        } catch (Exception e) {
-            throw new SampleUpdateException("Update of sample $sampleCode went wrong.", e)
+            output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
+        } catch (SampleUpdateException e){
+            output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
         }
+
     }
 
     private static Location updateLocationStatus(Location location, Status status) {

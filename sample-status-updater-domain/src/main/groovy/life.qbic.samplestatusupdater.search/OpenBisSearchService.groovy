@@ -1,6 +1,6 @@
 package life.qbic.samplestatusupdater.search
 
-interface OpenBisSearch {
+interface OpenBisSearchService {
 
     List<String> findNewOpenBisSamplesSince(Date registeredSinceDate)
 

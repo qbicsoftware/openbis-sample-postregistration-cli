@@ -2,11 +2,11 @@ package life.qbic.samplestatusupdater.search
 
 class FindNewOpenBisSamples implements SearchInput {
 
-    OpenBisSearch search
+    OpenBisSearchService search
 
     SearchOutput output
 
-    FindNewOpenBisSamples(OpenBisSearch search, SearchOutput output){
+    FindNewOpenBisSamples(OpenBisSearchService search, SearchOutput output){
         this.output = output
         this.search = search
     }
