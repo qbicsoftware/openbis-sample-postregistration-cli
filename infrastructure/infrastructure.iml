@@ -12,7 +12,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: life.qbic:sample-status-updater-domain:1.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="domain" />
     <orderEntry type="library" name="Maven: life.qbic:core-utils-lib:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" name="Maven: io.micronaut:micronaut-http-client:1.1.2" level="project" />
