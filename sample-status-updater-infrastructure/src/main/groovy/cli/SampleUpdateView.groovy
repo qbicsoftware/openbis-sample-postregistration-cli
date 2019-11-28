@@ -6,4 +6,8 @@ class SampleUpdateView {
         println "Sucessfully updated sample status for sample $sample!"
     }
 
+    static displayFailingUpdate(String sample) {
+        println " ERROR: Failed to update sample status for sample $sample!"
+    }
+
 }
