@@ -13,13 +13,13 @@
     <dependencies>
         <dependency>
             <groupId>life.qbic</groupId>
-            <artifactId>infrastructure</artifactId>
+            <artifactId>sample-status-updater-infrastructure</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>life.qbic</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>sample-status-updater-domain</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
