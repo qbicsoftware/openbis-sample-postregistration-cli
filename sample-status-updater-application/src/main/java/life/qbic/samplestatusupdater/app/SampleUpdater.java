@@ -63,6 +63,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             System.exit(1);
         } else {
             LOG.info("Found at least one sample tracking service.");
+            LOG.debug("Service address: " + serviceList.get(0).getRootUrl());
         }
 
         SampleTrackingService sampleTrackingService = new SampleTrackingConnector(serviceList.get(0), credentials);
