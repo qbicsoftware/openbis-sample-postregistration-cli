@@ -1,0 +1,8 @@
+life/qbic/samplestatusupdater/serviceconnectors/ServiceSearch.class
+life/qbic/samplestatusupdater/serviceconnectors/OpenBisSession.class
+life/qbic/samplestatusupdater/serviceconnectors/SampleTrackingConnector.class
+life/qbic/samplestatusupdater/search/SampleSearchConnector.class
+life/qbic/samplestatusupdater/serviceconnectors/ServiceUserCredentials.class
+cli/SampleSearchCliView.class
+cli/ParseProperties.class
+cli/SampleSearchPresenter.class
