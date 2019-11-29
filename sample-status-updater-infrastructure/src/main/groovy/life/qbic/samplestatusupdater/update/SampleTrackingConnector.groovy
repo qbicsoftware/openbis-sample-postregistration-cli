@@ -22,8 +22,10 @@ class SampleTrackingConnector implements SampleTrackingService {
     @Override
     def updateSample(String sampleCode, Location location) throws SampleUpdateException{
         HttpClient client = RxHttpClient.create(service.rootUrl)
-        HttpRequest request = HttpRequest.POST("/samples/$sampleCode/currentLocation/",
-                location).basicAuth(credentials.name, credentials.pw)
+        //TODO this is only a workaround, as the client seems not to prepend the base url.
+        URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/currentLocation/")
+
+        HttpRequest request = HttpRequest.POST(sampleUri, location).basicAuth(credentials.name, credentials.pw)
         client.withCloseable {
             def response = it.toBlocking().exchange(request)
             validateResponse(response)
