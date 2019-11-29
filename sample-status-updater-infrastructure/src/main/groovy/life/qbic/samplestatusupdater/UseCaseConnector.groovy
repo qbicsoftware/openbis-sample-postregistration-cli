@@ -14,7 +14,7 @@ class UseCaseConnector implements SearchOutput {
     @Override
     Object newOpenBisSampleCodes(List<String> sampleCodes) {
         sampleCodes.each { code ->
-            updateSampleStatus.update(code)
+            updateSampleStatus.updateSampleAtQBiC(code)
         }
     }
 }
