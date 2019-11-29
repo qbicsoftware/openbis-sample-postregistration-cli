@@ -32,7 +32,6 @@ class SampleTrackingConnector implements SampleTrackingService {
             def response = it.toBlocking().exchange(request)
             validateResponse(response)
         }
-
     }
 
     private static void validateResponse(HttpResponse response ){

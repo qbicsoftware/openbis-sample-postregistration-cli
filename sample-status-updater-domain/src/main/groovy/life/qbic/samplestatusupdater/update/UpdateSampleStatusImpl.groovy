@@ -18,7 +18,7 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
     @Override
     def updateSampleAtQBiC(String sampleCode) {
         Location qbicLocation = createQBiCLocation()
-        qbicLocation.status(Status.DATA_AT_QBIC)
+        qbicLocation.status(Status.METADATA_REGISTERED)
         try {
             service.updateSample(sampleCode, qbicLocation)
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
@@ -40,5 +40,9 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
         location.responsibleEmail("support@qbic.zendesk.com")
 
         return location
+    }
+
+    private static Location updateLocationStatus(Location location, Status status) {
+        location.status(status)
     }
 }
