@@ -3,7 +3,6 @@ package life.qbic.samplestatusupdater.app;
 import cli.ApplicationProperties;
 import cli.SampleUpdatePresenter;
 import life.qbic.cli.QBiCTool;
-import cli.ParseProperties;
 import life.qbic.samplestatusupdater.OpenBisSession;
 import life.qbic.samplestatusupdater.ServiceSearch;
 import life.qbic.samplestatusupdater.ServiceUserCredentials;
