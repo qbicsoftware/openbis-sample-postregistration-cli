@@ -31,18 +31,17 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
     private static Location createQBiCLocation(){
         Location location = new Location()
         Address address = new Address()
-        address.setStreet("Auf der Morgenstelle 10")
+        address.street ="Auf der Morgenstelle 10"
+        address.affiliation = "QBiC"
+        address.zipCode = 72076
+        address.country = "Germany"
 
-        location.address(address)
-        location.arrivalDate(new Date())
-        location.name("QBiC DataStore")
-        location.responsiblePerson("QBiC team")
-        location.responsibleEmail("support@qbic.zendesk.com")
+        location.address = address
+        location.arrivalDate = new Date()
+        location.name = "QBiC"
+        location.responsiblePerson ="QBiC Team"
+        location.responsibleEmail ="support@qbic.zendesk.com"
 
         return location
-    }
-
-    private static Location updateLocationStatus(Location location, Status status) {
-        location.status(status)
     }
 }
