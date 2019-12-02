@@ -1,5 +1,6 @@
 package life.qbic.samplestatusupdater.app;
 
+import cli.ApplicationProperties;
 import cli.SampleUpdatePresenter;
 import life.qbic.cli.QBiCTool;
 import cli.ParseProperties;
@@ -47,7 +48,9 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         // get the parsed command-line arguments
         final StatusUpdaterCommand command = super.getCommand();
 
-        Map properties = (Map) new ParseProperties(command.config).parse();
+
+        ApplicationProperties appProperties = new ApplicationProperties(command.config);
+        Map properties = (Map) appProperties.parse();
         OpenBisSession session = new OpenBisSession(
                                         (String) properties.get("openbisAsUrl"),
                                         (String) properties.get("openbisUser"),
@@ -77,6 +80,9 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         UseCaseConnector useCaseConnector = new UseCaseConnector(updateSampleStatus);
         final FindNewOpenBisSamples findNewOpenBisSamples = new FindNewOpenBisSamples(searchService, useCaseConnector);
         findNewOpenBisSamples.searchNewSamplesSince(lastSearchDate);
+
+        properties.put("lastSearchDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        appProperties.updatePropertyFile(properties);
 
     }
 
