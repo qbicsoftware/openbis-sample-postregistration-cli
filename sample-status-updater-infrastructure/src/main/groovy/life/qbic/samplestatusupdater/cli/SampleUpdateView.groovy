@@ -1,4 +1,4 @@
-package cli
+package life.qbic.samplestatusupdater.cli
 
 import groovy.util.logging.Log4j2
 
