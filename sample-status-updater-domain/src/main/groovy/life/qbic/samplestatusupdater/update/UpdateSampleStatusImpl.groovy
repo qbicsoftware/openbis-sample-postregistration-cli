@@ -20,7 +20,7 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
         Location qbicLocation = createQBiCLocation()
         qbicLocation.status(Status.METADATA_REGISTERED)
         try {
-            service.updateSample(sampleCode, qbicLocation)
+            service.registerFirstSampleLocation(sampleCode, qbicLocation)
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
         } catch (SampleUpdateException e){
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
