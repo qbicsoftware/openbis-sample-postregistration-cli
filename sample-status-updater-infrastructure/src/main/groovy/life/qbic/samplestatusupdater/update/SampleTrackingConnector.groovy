@@ -49,6 +49,7 @@ class SampleTrackingConnector implements SampleTrackingService {
             client.withCloseable { it.toBlocking().exchange(request) }
         } catch (HttpClientResponseException e) {
             if (e.response.status == HttpStatus.NOT_FOUND) {
+                log.info "Sample $sampleCode not yet registered, setting first sample location QBiC..."
                 updateSampleLocation(sampleCode, location)
             } else {
                 throw new HttpClientResponseException(e.message, e.response)
