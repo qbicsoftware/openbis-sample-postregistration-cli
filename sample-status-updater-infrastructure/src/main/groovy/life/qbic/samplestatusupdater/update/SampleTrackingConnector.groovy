@@ -2,9 +2,10 @@ package life.qbic.samplestatusupdater.update
 
 import groovy.util.logging.Log4j2
 import io.micronaut.http.HttpRequest
-import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.RxHttpClient
+import io.micronaut.http.client.exceptions.HttpClientResponseException
 import life.qbic.datamodel.services.Location
 import life.qbic.samplestatusupdater.ServiceUserCredentials
 import life.qbic.services.Service
@@ -21,24 +22,40 @@ class SampleTrackingConnector implements SampleTrackingService {
         this.credentials = credentials
     }
 
-    @Override
-    def updateSample(String sampleCode, Location location) throws SampleUpdateException{
+    private def updateSampleLocation(String sampleCode, Location location) {
         HttpClient client = RxHttpClient.create(service.rootUrl)
         //TODO this is only a workaround, as the client seems not to prepend the base url.
         URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/currentLocation/")
-        log.debug("final uri is $sampleUri")
+
         HttpRequest request = HttpRequest.POST(sampleUri, location).basicAuth(credentials.name, credentials.pw)
         client.withCloseable {
-            def response = it.toBlocking().exchange(request)
-            validateResponse(response)
+            it.toBlocking().exchange(request)
         }
     }
 
-    private static void validateResponse(HttpResponse response ){
-        def statusCode = response.status.code
-        if (statusCode != 200) {
-            throw new SampleUpdateException("Could not update sample status, " +
-                    "the http response code was %code. \n${response.reason()}")
+    @Override
+    def registerFirstSampleLocation(String sampleCode, Location location) throws SampleUpdateException{
+        HttpClient client = RxHttpClient.create(service.rootUrl)
+        //TODO this is only a workaround, as the client seems not to prepend the base url.
+        URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/")
+
+        HttpRequest request = HttpRequest.GET(sampleUri).basicAuth(credentials.name, credentials.pw)
+
+        /*
+        If the sample already is registered in the service, we do not want to change its location
+         */
+        try {
+            def response = client.withCloseable { it.toBlocking().exchange(request) }
+        } catch (HttpClientResponseException e) {
+            if (e.response.status == HttpStatus.NOT_FOUND) {
+                log.info "Sample $sampleCode not yet registered, setting first sample location QBiC..."
+                updateSampleLocation(sampleCode, location)
+            } else {
+                throw new HttpClientResponseException(e.message, e.response)
+            }
         }
+
     }
+
+
 }
