@@ -2,7 +2,6 @@ package life.qbic.samplestatusupdater.update
 
 import groovy.util.logging.Log4j2
 import io.micronaut.http.HttpRequest
-import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.RxHttpClient
@@ -35,7 +34,7 @@ class SampleTrackingConnector implements SampleTrackingService {
     }
 
     @Override
-    def registerFirstSampleLocation(String sampleCode, Location location) {
+    def registerFirstSampleLocation(String sampleCode, Location location) throws SampleUpdateException{
         HttpClient client = RxHttpClient.create(service.rootUrl)
         //TODO this is only a workaround, as the client seems not to prepend the base url.
         URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/")
@@ -46,7 +45,7 @@ class SampleTrackingConnector implements SampleTrackingService {
         If the sample already is registered in the service, we do not want to change its location
          */
         try {
-            client.withCloseable { it.toBlocking().exchange(request) }
+            def response = client.withCloseable { it.toBlocking().exchange(request) }
         } catch (HttpClientResponseException e) {
             if (e.response.status == HttpStatus.NOT_FOUND) {
                 log.info "Sample $sampleCode not yet registered, setting first sample location QBiC..."

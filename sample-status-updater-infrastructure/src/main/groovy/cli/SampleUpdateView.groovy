@@ -6,7 +6,7 @@ import groovy.util.logging.Log4j2
 class SampleUpdateView {
 
     static displaySucessfulUpdate(String sample) {
-        log.info "Sucessfully updated sample status for sample $sample!"
+        log.info "Sample $sample location is set to QBiC."
     }
 
     static displayFailingUpdate(String sample) {
