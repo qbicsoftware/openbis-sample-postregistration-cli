@@ -10,6 +10,7 @@ import life.qbic.samplestatusupdater.cli.SampleUpdatePresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearchService;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
+import life.qbic.samplestatusupdater.search.SampleTypeFilter;
 import life.qbic.samplestatusupdater.update.SampleTrackingService;
 import life.qbic.samplestatusupdater.update.SampleTrackingServiceConnector;
 import life.qbic.samplestatusupdater.update.UpdateSampleStatus;
@@ -47,7 +48,6 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         // get the parsed command-line arguments
         final StatusUpdaterCommand command = super.getCommand();
 
-
         ApplicationProperties appProperties = new ApplicationProperties(command.config);
         Map properties = (Map) appProperties.parse();
         OpenBisSession session = new OpenBisSession(
@@ -58,6 +58,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
                                                     (String) properties.get("serviceUser"),
                                                     (String) properties.get("serviceUserPw"));
         URL serviceRegistry = createUrlFromString((String) properties.get("serviceRegistryUrl"));
+
         List<Service> serviceList = ServiceSearch.findSampleTrackingService(serviceRegistry);
 
         if (serviceList.isEmpty()) {
