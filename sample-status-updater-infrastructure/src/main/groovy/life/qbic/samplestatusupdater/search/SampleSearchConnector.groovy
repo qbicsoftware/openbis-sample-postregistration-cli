@@ -16,7 +16,8 @@ class SampleSearchConnector implements OpenBisSearchService {
     }
 
     @Override
-    List<String> findNewOpenBisSamplesSince(Date registeredSince) {
+    List<String> findNewOpenBisSamplesSince(Date registeredSince, List sampleTypeFilter) {
+        println sampleTypeFilter
         def criteria = new SampleSearchCriteria()
         criteria.withRegistrationDate().thatIsLaterThanOrEqualTo(registeredSince)
 
@@ -25,7 +26,7 @@ class SampleSearchConnector implements OpenBisSearchService {
 
         def searchResult = apiConnection.searchSamples(token, criteria, fetchOptions)
         def sampleList = searchResult.getObjects().findAll {
-            ["Q_TEST_SAMPLE", "Q_BIOLOGICAL_ENTITY", "Q_BIOLOGICAL_SAMPLE"].contains(it.type.code)
+            sampleTypeFilter.contains(it.type.code)
         }
         return  sampleList.collect { it.code }
     }
