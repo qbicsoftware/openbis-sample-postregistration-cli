@@ -10,8 +10,8 @@ import life.qbic.samplestatusupdater.cli.SampleUpdatePresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearchService;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
-import life.qbic.samplestatusupdater.update.SampleTrackingConnector;
 import life.qbic.samplestatusupdater.update.SampleTrackingService;
+import life.qbic.samplestatusupdater.update.SampleTrackingServiceConnector;
 import life.qbic.samplestatusupdater.update.UpdateSampleStatus;
 import life.qbic.samplestatusupdater.update.UpdateSampleStatusImpl;
 import life.qbic.services.Service;
@@ -68,7 +68,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             LOG.debug("Service address: " + serviceList.get(0).getRootUrl());
         }
 
-        SampleTrackingService sampleTrackingService = new SampleTrackingConnector(serviceList.get(0), credentials);
+        SampleTrackingService sampleTrackingService = new SampleTrackingServiceConnector(serviceList.get(0), credentials);
 
         OpenBisSearchService searchService = new SampleSearchConnector(session.getApi(), session.getToken());
         Date lastSearchDate = parseDateFromStringWithPattern((String) properties.get("lastSearchDate"), "yyyy-MM-dd");
