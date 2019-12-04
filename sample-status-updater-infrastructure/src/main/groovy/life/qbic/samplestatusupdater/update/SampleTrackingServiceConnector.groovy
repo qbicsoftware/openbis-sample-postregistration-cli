@@ -34,7 +34,7 @@ class SampleTrackingServiceConnector implements SampleTrackingService {
     }
 
     @Override
-    def registerFirstSampleLocation(String sampleCode, Location location) throws SampleUpdateException{
+    def registerFirstSampleLocation(String sampleCode, Location location) {
         HttpClient client = RxHttpClient.create(service.rootUrl)
         //TODO this is only a workaround, as the client seems not to prepend the base url.
         URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/")
@@ -51,6 +51,7 @@ class SampleTrackingServiceConnector implements SampleTrackingService {
                 log.info "Sample $sampleCode not yet registered, setting first sample location QBiC..."
                 updateSampleLocation(sampleCode, location)
             } else {
+                log.error("Http response exception: ${e.message}, ${e.response}")
                 throw new HttpClientResponseException(e.message, e.response)
             }
         }
