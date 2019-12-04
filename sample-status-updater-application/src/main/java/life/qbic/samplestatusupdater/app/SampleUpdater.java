@@ -1,17 +1,18 @@
 package life.qbic.samplestatusupdater.app;
 
-import cli.ApplicationProperties;
-import cli.SampleUpdatePresenter;
 import life.qbic.cli.QBiCTool;
 import life.qbic.samplestatusupdater.OpenBisSession;
 import life.qbic.samplestatusupdater.ServiceSearch;
 import life.qbic.samplestatusupdater.ServiceUserCredentials;
 import life.qbic.samplestatusupdater.UseCaseConnector;
+import life.qbic.samplestatusupdater.cli.ApplicationProperties;
+import life.qbic.samplestatusupdater.cli.SampleUpdatePresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearchService;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
-import life.qbic.samplestatusupdater.update.SampleTrackingConnector;
+import life.qbic.samplestatusupdater.search.SampleTypeFilter;
 import life.qbic.samplestatusupdater.update.SampleTrackingService;
+import life.qbic.samplestatusupdater.update.SampleTrackingServiceConnector;
 import life.qbic.samplestatusupdater.update.UpdateSampleStatus;
 import life.qbic.samplestatusupdater.update.UpdateSampleStatusImpl;
 import life.qbic.services.Service;
@@ -47,7 +48,6 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         // get the parsed command-line arguments
         final StatusUpdaterCommand command = super.getCommand();
 
-
         ApplicationProperties appProperties = new ApplicationProperties(command.config);
         Map properties = (Map) appProperties.parse();
         OpenBisSession session = new OpenBisSession(
@@ -58,6 +58,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
                                                     (String) properties.get("serviceUser"),
                                                     (String) properties.get("serviceUserPw"));
         URL serviceRegistry = createUrlFromString((String) properties.get("serviceRegistryUrl"));
+
         List<Service> serviceList = ServiceSearch.findSampleTrackingService(serviceRegistry);
 
         if (serviceList.isEmpty()) {
@@ -68,7 +69,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
             LOG.debug("Service address: " + serviceList.get(0).getRootUrl());
         }
 
-        SampleTrackingService sampleTrackingService = new SampleTrackingConnector(serviceList.get(0), credentials);
+        SampleTrackingService sampleTrackingService = new SampleTrackingServiceConnector(serviceList.get(0), credentials);
 
         OpenBisSearchService searchService = new SampleSearchConnector(session.getApi(), session.getToken());
         Date lastSearchDate = parseDateFromStringWithPattern((String) properties.get("lastSearchDate"), "yyyy-MM-dd");

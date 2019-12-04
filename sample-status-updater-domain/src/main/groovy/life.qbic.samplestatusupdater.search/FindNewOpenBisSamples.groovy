@@ -13,7 +13,7 @@ class FindNewOpenBisSamples implements SearchInput {
 
     @Override
     def searchNewSamplesSince(Date date) {
-        def result = search.findNewOpenBisSamplesSince(date)
+        def result = search.findNewOpenBisSamplesSince(date, new SampleTypeFilter())
         output.newOpenBisSampleCodes(result)
     }
 }

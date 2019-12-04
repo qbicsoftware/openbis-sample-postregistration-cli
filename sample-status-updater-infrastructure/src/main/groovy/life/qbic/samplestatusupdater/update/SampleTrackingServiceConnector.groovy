@@ -11,13 +11,13 @@ import life.qbic.samplestatusupdater.ServiceUserCredentials
 import life.qbic.services.Service
 
 @Log4j2
-class SampleTrackingConnector implements SampleTrackingService {
+class SampleTrackingServiceConnector implements SampleTrackingService {
 
     ServiceUserCredentials credentials
 
     Service service
 
-    SampleTrackingConnector(Service sampleTrackingService, ServiceUserCredentials credentials){
+    SampleTrackingServiceConnector(Service sampleTrackingService, ServiceUserCredentials credentials){
         this.service = sampleTrackingService
         this.credentials = credentials
     }

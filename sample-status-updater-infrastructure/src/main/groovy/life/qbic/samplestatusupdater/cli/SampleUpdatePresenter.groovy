@@ -1,4 +1,4 @@
-package cli
+package life.qbic.samplestatusupdater.cli
 
 import life.qbic.samplestatusupdater.update.UpdateOutput
 import life.qbic.samplestatusupdater.update.UpdateResponse
