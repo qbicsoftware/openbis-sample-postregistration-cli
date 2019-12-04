@@ -1,12 +1,12 @@
 package life.qbic.samplestatusupdater.app;
 
-import cli.ApplicationProperties;
-import cli.SampleUpdatePresenter;
 import life.qbic.cli.QBiCTool;
 import life.qbic.samplestatusupdater.OpenBisSession;
 import life.qbic.samplestatusupdater.ServiceSearch;
 import life.qbic.samplestatusupdater.ServiceUserCredentials;
 import life.qbic.samplestatusupdater.UseCaseConnector;
+import life.qbic.samplestatusupdater.cli.ApplicationProperties;
+import life.qbic.samplestatusupdater.cli.SampleUpdatePresenter;
 import life.qbic.samplestatusupdater.search.OpenBisSearchService;
 import life.qbic.samplestatusupdater.search.SampleSearchConnector;
 import life.qbic.samplestatusupdater.search.FindNewOpenBisSamples;
