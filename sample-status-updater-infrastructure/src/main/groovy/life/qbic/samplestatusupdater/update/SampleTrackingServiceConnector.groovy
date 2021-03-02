@@ -6,7 +6,7 @@ import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.RxHttpClient
 import io.micronaut.http.client.exceptions.HttpClientResponseException
-import life.qbic.datamodel.services.Location
+import life.qbic.datamodel.samples.Location
 import life.qbic.samplestatusupdater.ServiceUserCredentials
 import life.qbic.services.Service
 
