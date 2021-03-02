@@ -1,9 +1,8 @@
 package life.qbic.samplestatusupdater.update
 
-import life.qbic.datamodel.services.Address
-import life.qbic.datamodel.services.Location
-import life.qbic.datamodel.services.Status
-
+import life.qbic.datamodel.people.Address
+import life.qbic.datamodel.samples.Location
+import life.qbic.datamodel.samples.Status
 class UpdateSampleStatusImpl implements UpdateSampleStatus {
 
     SampleTrackingService service
