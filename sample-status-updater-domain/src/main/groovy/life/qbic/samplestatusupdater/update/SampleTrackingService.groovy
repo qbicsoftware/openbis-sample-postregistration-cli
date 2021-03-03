@@ -1,6 +1,6 @@
 package life.qbic.samplestatusupdater.update
 
-import life.qbic.datamodel.services.Location
+import life.qbic.datamodel.samples.Location
 
 interface SampleTrackingService {
 
