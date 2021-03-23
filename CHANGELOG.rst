@@ -4,6 +4,18 @@ Changelog
 
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
+1.3.0-SNAPSHOT (2021-03-23)
+---------------------------
+
+**Added**
+
+**Fixed**
+
+**Dependencies**
+
+* Bump ``data-model-lib:2.0.0`` -> ``2.4.0``
+
+**Deprecated**
 
 1.2.1 (2021-03-02)
 ------------------
