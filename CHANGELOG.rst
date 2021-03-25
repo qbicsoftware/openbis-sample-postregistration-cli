@@ -4,6 +4,19 @@ Changelog
 
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
+1.2.3 (2021-03-25)
+---------------------------
+
+**Added**
+
+**Fixed**
+
+**Dependencies**
+
+* Bump ``cli-parent-pom:2.1.0`` -> ``3.1.4`` (`#10 <https://github.com/qbicsoftware/sample-status-updater-cli/pull/10>`_)
+
+**Deprecated**
+
 1.2.2 (2021-03-25)
 ---------------------------
 
