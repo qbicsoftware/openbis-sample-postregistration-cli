@@ -9,11 +9,13 @@ This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 **Added**
 
+* Add `maven enforcer plugin <https://maven.apache.org/enforcer/maven-enforcer-plugin>`_ to show dependency conflicts
+
 **Fixed**
 
 **Dependencies**
 
-* Bump ``data-model-lib:2.0.0`` -> ``2.4.0``
+* Bump ``data-model-lib:2.0.0`` -> ``2.4.0`` (`#8 <https://github.com/qbicsoftware/sample-status-updater-cli/pull/8>`_)
 
 **Deprecated**
 
