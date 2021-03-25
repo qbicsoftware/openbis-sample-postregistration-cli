@@ -17,7 +17,6 @@ class SampleSearchConnector implements OpenBisSearchService {
 
     @Override
     List<String> findNewOpenBisSamplesSince(Date registeredSince, List sampleTypeFilter) {
-        println sampleTypeFilter
         def criteria = new SampleSearchCriteria()
         criteria.withRegistrationDate().thatIsLaterThanOrEqualTo(registeredSince)
 
