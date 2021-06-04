@@ -4,6 +4,20 @@ Changelog
 
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
+1.2.4 (2021-06-04)
+---------------------------
+
+**Added**
+
+**Fixed**
+
+- App now writes the property file correctly even on failure
+- App returns exit code of 1, if an exception was detected during the sample update
+
+**Dependencies**
+
+**Deprecated**
+
 1.2.3 (2021-03-25)
 ---------------------------
 
