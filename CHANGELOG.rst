@@ -5,11 +5,11 @@ Changelog
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 1.3.0 (2022-01-17)
----------------------------
+------------------
 
 **Added**
 
-* Only "Q_TEST_SAMPLES" are added to the tracking database to conform closer to lab processes
+* Only "Q_TEST_SAMPLES" are added to the database. This makes tracking of lab processes more intuitive.
 
 **Fixed**
 
