@@ -1,7 +1,9 @@
 package life.qbic.samplestatusupdater.search
 
+import java.time.Instant
+
 interface OpenBisSearchService {
 
-    List<String> findNewOpenBisSamplesSince(Date registeredSinceDate, List sampleTypeFilter)
+    List<String> findNewOpenBisSamplesSince(Instant registeredSinceDate, List sampleTypeFilter)
 
 }

@@ -1,5 +1,7 @@
 package life.qbic.samplestatusupdater.app;
 
+import java.time.Instant;
+import java.util.Arrays;
 import life.qbic.cli.QBiCTool;
 import life.qbic.samplestatusupdater.OpenBisSession;
 import life.qbic.samplestatusupdater.ServiceSearch;
@@ -72,8 +74,16 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         SampleTrackingService sampleTrackingService = new SampleTrackingServiceConnector(serviceList.get(0), credentials);
 
         OpenBisSearchService searchService = new SampleSearchConnector(session.getApi(), session.getToken());
-        Date lastSearchDate = parseDateFromStringWithPattern((String) properties.get("lastSearchDate"), "yyyy-MM-dd");
+        Instant lastSearchDate = null;
+        try{
+            lastSearchDate = Instant.parse((String) properties.get("lastSearchDate"));
+        } catch (Exception e) {
+            LOG.error("Could not parse last search date " + properties.get("lastSearchDate"));
+            Arrays.stream(e.getStackTrace()).forEach( LOG::error );
+            System.exit(1);
+        }
 
+        Instant timePointBeforeSearch = Instant.now();
         SampleUpdatePresenter updatePresenter = new SampleUpdatePresenter();
         int exitCode = 0;
         try {
@@ -84,7 +94,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
         } catch (Exception e) {
             exitCode = 1;
         }
-        properties.put("lastSearchDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        properties.put("lastSearchDate", timePointBeforeSearch.toString()) ;
         appProperties.updatePropertyFile(properties);
 
         System.exit(exitCode);
