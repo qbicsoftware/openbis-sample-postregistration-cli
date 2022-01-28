@@ -4,6 +4,20 @@ Changelog
 
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
+1.4.0 (2022-01-28)
+------------------
+
+**Added**
+
+* Last search can be now configured as a Instant with hours, minutes and seconds. This allows to set smaller search intervals than days, which was
+the restriction up to this point.
+
+**Fixed**
+
+**Dependencies**
+
+**Deprecated**
+
 1.3.0 (2022-01-17)
 ------------------
 
