@@ -34,7 +34,7 @@ You have to provide a property file, that has to contain the following fields:
     "serviceRegistryUrl": "http://test-registry.local:8500/v1",
     "serviceUser": "serviceUserName",
     "serviceUserPw": "theservicepassword",
-    "lastSearchDate": "2019-10-10"
+    "lastSearchTimePoint": 2022-01-27T17:10:04.504Z"
 }
 ```
 

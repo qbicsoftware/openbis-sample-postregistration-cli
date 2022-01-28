@@ -4,6 +4,8 @@ import ch.ethz.sis.openbis.generic.asapi.v3.dto.sample.fetchoptions.SampleFetchO
 import ch.ethz.sis.openbis.generic.asapi.v3.dto.sample.search.SampleSearchCriteria
 import ch.ethz.sis.openbis.generic.asapi.v3.IApplicationServerApi
 
+import java.time.Instant
+
 class SampleSearchConnector implements OpenBisSearchService {
 
     IApplicationServerApi apiConnection
@@ -16,9 +18,9 @@ class SampleSearchConnector implements OpenBisSearchService {
     }
 
     @Override
-    List<String> findNewOpenBisSamplesSince(Date registeredSince, List sampleTypeFilter) {
+    List<String> findNewOpenBisSamplesSince(Instant registeredSince, List sampleTypeFilter) {
         def criteria = new SampleSearchCriteria()
-        criteria.withRegistrationDate().thatIsLaterThanOrEqualTo(registeredSince)
+        criteria.withRegistrationDate().thatIsLaterThanOrEqualTo(Date.from(registeredSince))
 
         def fetchOptions = new SampleFetchOptions()
         fetchOptions.withType()

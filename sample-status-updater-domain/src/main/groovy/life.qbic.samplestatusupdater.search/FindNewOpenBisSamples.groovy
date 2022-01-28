@@ -1,5 +1,7 @@
 package life.qbic.samplestatusupdater.search
 
+import java.time.Instant
+
 class FindNewOpenBisSamples implements SearchInput {
 
     OpenBisSearchService search
@@ -12,7 +14,7 @@ class FindNewOpenBisSamples implements SearchInput {
     }
 
     @Override
-    def searchNewSamplesSince(Date date) {
+    def searchNewSamplesSince(Instant date) {
         def result = search.findNewOpenBisSamplesSince(date, new SampleTypeFilter())
         output.newOpenBisSampleCodes(result)
     }
