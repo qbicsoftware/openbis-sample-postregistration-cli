@@ -13,7 +13,7 @@
   <artifactId>sample-status-updater-cli</artifactId>
   <version>1.4.0-SNAPSHOT</version>
   <name>sample status updater app</name>
-  <url>http://github.com/qbicsoftware/sample-status-updater-cli</url>
+  <url>https://github.com/qbicsoftware/sample-status-updater-cli</url>
   <description>Command-line utility to add the first location of sample tracking information
   </description>
   <packaging>pom</packaging>
