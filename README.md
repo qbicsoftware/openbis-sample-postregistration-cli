@@ -1,7 +1,13 @@
 # Sample command-line Tool
 
-[![Build Status](https://travis-ci.com/qbicsoftware/sample-status-updater-cli.svg?branch=development)](https://travis-ci.com/qbicsoftware/sample-status-updater-cli)[![Code Coverage]( https://codecov.io/gh/qbicsoftware/sample-status-updater-cli/branch/development/graph/badge.svg)](https://codecov.io/gh/qbicsoftware/sample-status-updater-cli)
+[![Build Maven Package](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml)
+[![Run Maven Tests](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml)
+[![CodeQL](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/codeql-analysis.yml)
+[![release](https://img.shields.io/github/v/release/qbicsoftware/sample-status-updater-cli?include_prereleases)](https://github.com/qbicsoftware/sample-status-updater-cli/releases)
 
+[![license](https://img.shields.io/github/license/qbicsoftware/sample-status-updater-cli)](https://github.com/qbicsoftware/sample-status-updater-cli/blob/main/LICENSE)
+![language](https://img.shields.io/badge/language-java-blue.svg)
+![framework](https://img.shields.io/badge/language-groovy-blue.svg)
 Sample command-line Tool - Command-line utility to add the first location of sample tracking information
 
 ## Author
