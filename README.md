@@ -1,4 +1,5 @@
 # Sample command-line Tool
+<div align="center">
 
 [![Build Maven Package](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml)
 [![Run Maven Tests](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml)
@@ -8,19 +9,34 @@
 [![license](https://img.shields.io/github/license/qbicsoftware/sample-status-updater-cli)](https://github.com/qbicsoftware/sample-status-updater-cli/blob/main/LICENSE)
 ![language](https://img.shields.io/badge/language-java-blue.svg)
 ![framework](https://img.shields.io/badge/language-groovy-blue.svg)
-Sample command-line Tool - Command-line utility to add the first location of sample tracking information
+</div>
+
+Sample command-line Tool - Command-line utility to track the first status and location of newly registered samples.
 
 ## Author
 Created by Sven Fillinger (sven.fillinger@qbic.uni-tuebingen.de).
 
-## Description
+## How to run
 
-## How to Install
-
-Download the application and run it with:
+Create a runable version of this code with maven and java 8:
 
 ```
-> java -jar sample-status-updater-cli.jar -h
+> mvn clean package
+
+```
+
+The JAR file will be created in the ``/target`` folder, for example:
+
+```
+|-target
+|---sample-status-updater-cli-1.0.0.jar
+|---...
+```
+
+Run the application with:
+
+```
+> java -jar sample-status-updater-cli-1.0.0.jar -h
 Usage: OpenBIS status updater [-hv] -c=<config>
 Command-line utility to...
   -c, --config=<config>   Property file in JSON to run the sample status updater.
@@ -29,6 +45,9 @@ Command-line utility to...
 
 
 ```
+### Configuration
+
+#### Properties
 
 You have to provide a property file, that has to contain the following fields:
 
@@ -45,3 +64,8 @@ You have to provide a property file, that has to contain the following fields:
 ```
 
 The application currently tries to automatically update the `lastSearchDate` property, so it needs to have write permissions. 
+
+## How to use
+
+Deploy the service on the desired server and run it with a cron job regularly. 
+Make sure the defined service address can be accessed. In the QBiC realm it will be the sample-tracking-service.
