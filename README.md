@@ -70,5 +70,3 @@ Make sure the defined service address can be accessed. In the QBiC realm it will
 ## License
 
 This work is licensed under the [MIT license](https://mit-license.org/).
-
-**Note**: This work uses the [Vaadin Framework](https://github.com/vaadin), which is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
