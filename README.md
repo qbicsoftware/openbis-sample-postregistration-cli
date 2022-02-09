@@ -19,7 +19,6 @@ Create a runable version of this code with maven and java 8:
 
 ```
 > mvn clean package
-
 ```
 
 The JAR file will be created in the ``/target`` folder, for example:
