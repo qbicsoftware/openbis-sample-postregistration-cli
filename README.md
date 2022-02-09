@@ -1,5 +1,7 @@
-# Sample command-line Tool
 <div align="center">
+
+# Sample Status Updater CLI
+ _Command-line utility to track the first status and location of newly registered samples._
 
 [![Build Maven Package](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/build_package.yml)
 [![Run Maven Tests](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml/badge.svg)](https://github.com/qbicsoftware/sample-status-updater-cli/actions/workflows/run_tests.yml)
@@ -10,11 +12,6 @@
 ![language](https://img.shields.io/badge/language-java-blue.svg)
 ![framework](https://img.shields.io/badge/language-groovy-blue.svg)
 </div>
-
-Sample command-line Tool - Command-line utility to track the first status and location of newly registered samples.
-
-## Author
-Created by Sven Fillinger (sven.fillinger@qbic.uni-tuebingen.de).
 
 ## How to run
 
