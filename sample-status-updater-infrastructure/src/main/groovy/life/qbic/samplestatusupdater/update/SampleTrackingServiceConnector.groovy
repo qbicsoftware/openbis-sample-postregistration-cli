@@ -1,5 +1,6 @@
 package life.qbic.samplestatusupdater.update
 
+import groovy.json.JsonOutput
 import groovy.util.logging.Log4j2
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpStatus
@@ -7,8 +8,11 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.RxHttpClient
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import life.qbic.datamodel.samples.Location
+import life.qbic.datamodel.samples.Status
 import life.qbic.samplestatusupdater.ServiceUserCredentials
 import life.qbic.services.Service
+
+import java.time.Instant
 
 @Log4j2
 class SampleTrackingServiceConnector implements SampleTrackingService {
@@ -55,8 +59,22 @@ class SampleTrackingServiceConnector implements SampleTrackingService {
                 throw new SampleUpdateException("Could not update sample ${sampleCode}")
             }
         }
-
     }
 
+    @Override
+    def registerSampleStatus(String sampleCode, Status status, Instant timepoint) throws SampleUpdateException {
+        HttpClient client = RxHttpClient.create(service.rootUrl)
+        //TODO this is only a workaround, as the client seems not to prepend the base url.
+        URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/v2/samples/$sampleCode/status")
 
+        Map parameters = new HashMap()
+        parameters.add("status" : status.toString())
+        parameters.add("validFrom" : timepoint.toString())
+        String statusJson = JsonOutput.toJson(parameters)
+
+        HttpRequest request = HttpRequest.PUT(sampleUri, statusJson).basicAuth(credentials.name, credentials.pw)
+        client.withCloseable {
+            it.toBlocking().exchange(request)
+        }
+    }
 }

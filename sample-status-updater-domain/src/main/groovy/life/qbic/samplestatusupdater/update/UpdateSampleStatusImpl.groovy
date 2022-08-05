@@ -3,6 +3,9 @@ package life.qbic.samplestatusupdater.update
 import life.qbic.datamodel.people.Address
 import life.qbic.datamodel.samples.Location
 import life.qbic.datamodel.samples.Status
+
+import java.time.Instant
+
 class UpdateSampleStatusImpl implements UpdateSampleStatus {
 
     SampleTrackingService service
@@ -24,7 +27,16 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
         } catch (SampleUpdateException e){
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
         }
+    }
 
+    @Override
+    def updateSample(String sampleCode, Instant timepoint) throws SampleUpdateException {
+        try {
+            service.registerSampleStatus(sampleCode, Status.METADATA_REGISTERED, timepoint)
+            output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
+        } catch (SampleUpdateException e){
+            output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
+        }
     }
 
     private static Location createQBiCLocation(){
