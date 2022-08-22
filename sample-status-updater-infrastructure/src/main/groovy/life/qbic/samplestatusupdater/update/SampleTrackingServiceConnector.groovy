@@ -67,9 +67,9 @@ class SampleTrackingServiceConnector implements SampleTrackingService {
         //TODO this is only a workaround, as the client seems not to prepend the base url.
         URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/v2/samples/$sampleCode/status")
 
-        Map parameters = new HashMap()
-        parameters.add("status" : status.toString())
-        parameters.add("validFrom" : timepoint.toString())
+        Map<String,String> parameters = new HashMap<>()
+        parameters.put("status", status.toString())
+        parameters.put("validSince", timepoint.toString())
         String statusJson = JsonOutput.toJson(parameters)
 
         HttpRequest request = HttpRequest.PUT(sampleUri, statusJson).basicAuth(credentials.name, credentials.pw)
