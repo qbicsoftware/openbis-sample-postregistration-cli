@@ -18,7 +18,7 @@ class SampleSearchConnector implements OpenBisSearchService {
     }
 
     @Override
-    List<String> findNewOpenBisSamplesSince(Instant registeredSince, List sampleTypeFilter) {
+    List<SampleModification> findNewOpenBisSamplesSince(Instant registeredSince, List sampleTypeFilter) {
         def criteria = new SampleSearchCriteria()
         criteria.withRegistrationDate().thatIsLaterThanOrEqualTo(Date.from(registeredSince))
 
@@ -29,6 +29,8 @@ class SampleSearchConnector implements OpenBisSearchService {
         def sampleList = searchResult.getObjects().findAll {
             sampleTypeFilter.contains(it.type.code)
         }
-        return  sampleList.collect { it.code }
+        return sampleList.stream()
+                .map(it -> new SampleModification(it.code, it.getModificationDate().toInstant()))
+                .collect()
     }
 }
