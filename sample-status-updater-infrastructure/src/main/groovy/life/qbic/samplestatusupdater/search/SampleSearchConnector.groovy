@@ -30,7 +30,7 @@ class SampleSearchConnector implements OpenBisSearchService {
             sampleTypeFilter.contains(it.type.code)
         }
         return sampleList.stream()
-                .map(it -> new SampleModification(it.code, it.getModificationDate().toInstant()))
+                .map(it -> new SampleModification(it.code, it.getRegistrationDate().toInstant()))
                 .collect()
     }
 }
