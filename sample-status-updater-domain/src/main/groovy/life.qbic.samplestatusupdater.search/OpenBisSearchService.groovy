@@ -4,6 +4,6 @@ import java.time.Instant
 
 interface OpenBisSearchService {
 
-    List<String> findNewOpenBisSamplesSince(Instant registeredSinceDate, List sampleTypeFilter)
+    List<SampleModification> findNewOpenBisSamplesSince(Instant registeredSinceDate, List sampleTypeFilter)
 
 }
