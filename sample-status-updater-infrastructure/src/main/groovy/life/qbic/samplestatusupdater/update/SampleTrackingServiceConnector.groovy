@@ -40,7 +40,6 @@ class SampleTrackingServiceConnector implements SampleTrackingService {
     @Override
     def registerFirstSampleLocation(String sampleCode, Location location) throws SampleUpdateException {
         HttpClient client = RxHttpClient.create(service.rootUrl)
-        //test
         //TODO this is only a workaround, as the client seems not to prepend the base url.
         URI sampleUri = new URI("${service.rootUrl.toExternalForm()}/samples/$sampleCode/")
 
