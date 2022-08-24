@@ -2,6 +2,6 @@ package life.qbic.samplestatusupdater.search
 
 interface SearchOutput {
 
-    def newOpenBisSampleCodes(List<SampleRegistration> sampleRegistrations)
+    def newOpenBisSampleCodes(List<SampleRegistration> registrations)
 
 }
