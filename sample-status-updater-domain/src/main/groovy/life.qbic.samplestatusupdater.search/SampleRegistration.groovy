@@ -10,7 +10,7 @@ class SampleRegistration {
   final String sampleCode
   final Instant modificationTime
 
-  SampleRegistration(String sampleCode, Instant modificationTime) {
+  SampleRegistration(String sampleCode, Instant registration) {
     this.sampleCode = sampleCode
     this.modificationTime = modificationTime
   }
