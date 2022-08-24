@@ -13,7 +13,7 @@ class UseCaseConnector implements SearchOutput {
     }
 
     @Override
-    Object newOpenBisSampleCodes(List<SampleRegistration> sampleRegistrations) {
+    Object newOpenBisSampleCodes(List<SampleRegistration> registrations) {
         sampleRegistrations.each { sampleRegistration ->
             updateSampleStatus.updateSample(sampleRegistration.sampleCode, sampleRegistration.modificationTime)
         }
