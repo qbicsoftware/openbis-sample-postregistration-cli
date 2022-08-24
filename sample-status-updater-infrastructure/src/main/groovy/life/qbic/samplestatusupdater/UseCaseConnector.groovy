@@ -1,10 +1,8 @@
 package life.qbic.samplestatusupdater
 
-import life.qbic.samplestatusupdater.search.SampleModification
+import life.qbic.samplestatusupdater.search.SampleRegistration
 import life.qbic.samplestatusupdater.search.SearchOutput
 import life.qbic.samplestatusupdater.update.UpdateSampleStatus
-
-import java.time.Instant
 
 class UseCaseConnector implements SearchOutput {
 
@@ -15,9 +13,9 @@ class UseCaseConnector implements SearchOutput {
     }
 
     @Override
-    Object newOpenBisSampleCodes(List<SampleModification> sampleModifications) {
-        sampleModifications.each { modification ->
-            updateSampleStatus.updateSample(modification.sampleCode, modification.modificationTime)
+    Object newOpenBisSampleCodes(List<SampleRegistration> registrations) {
+        sampleRegistrations.each { sampleRegistration ->
+            updateSampleStatus.updateSample(sampleRegistration.sampleCode, sampleRegistration.modificationTime)
         }
     }
 }
