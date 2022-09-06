@@ -1,6 +1,6 @@
 package life.qbic.samplestatusupdater.search
 
-import com.fasterxml.jackson.databind.ObjectMapper
+
 import groovy.transform.EqualsAndHashCode
 
 import java.time.Instant
@@ -9,13 +9,13 @@ import java.time.Instant
 class SampleRegistration {
 
   final String sampleCode
-  final Instant modificationTime
+  final Instant registrationTime
 
   SampleRegistration(String sampleCode, Instant registration) {
     Objects.requireNonNull(sampleCode)
     Objects.requireNonNull(registration)
     this.sampleCode = sampleCode
-    this.modificationTime = modificationTime
+    this.registrationTime = registration
   }
 
 
