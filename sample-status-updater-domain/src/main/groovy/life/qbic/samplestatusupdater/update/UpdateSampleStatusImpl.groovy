@@ -3,10 +3,13 @@ package life.qbic.samplestatusupdater.update
 import life.qbic.datamodel.people.Address
 import life.qbic.datamodel.samples.Location
 import life.qbic.datamodel.samples.Status
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 import java.time.Instant
 
 class UpdateSampleStatusImpl implements UpdateSampleStatus {
+    private static final Logger log = LogManager.getLogger(UpdateSampleStatusImpl.class);
 
     SampleTrackingService service
 
@@ -25,6 +28,7 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
             service.registerFirstSampleLocation(sampleCode, qbicLocation)
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
         } catch (SampleUpdateException e){
+            log.error(e.getMessage(), e)
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
         }
     }
@@ -32,9 +36,13 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
     @Override
     def updateSample(String sampleCode, Instant timepoint) throws SampleUpdateException {
         try {
+            log.info("attempting registration of $sampleCode at $timepoint")
             service.registerSampleStatus(sampleCode, Status.METADATA_REGISTERED, timepoint)
-            output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true))
+            def updateResponse = new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true)
+            log.info(updateResponse)
+            output.updateResponse(updateResponse)
         } catch (SampleUpdateException e){
+            log.error(e.getMessage(), e)
             output.updateResponse(new UpdateResponse(sampleCode: sampleCode, updateSuccessful: false))
         }
     }

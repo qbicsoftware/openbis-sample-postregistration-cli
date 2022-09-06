@@ -94,6 +94,7 @@ public class SampleUpdater extends QBiCTool<StatusUpdaterCommand> {
       properties.put("lastSearchTimePoint", timePointBeforeSearch.toString());
       appProperties.updatePropertyFile(properties);
     } catch (Exception e) {
+      LOG.error(e.getMessage(), e);
       exitCode = 1;
     }
     System.exit(exitCode);
