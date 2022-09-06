@@ -20,7 +20,7 @@ class UseCaseConnector implements SearchOutput {
     Object newOpenBisSampleCodes(List<SampleRegistration> registrations) {
         log.info("found ${registrations.size()} new registrations.")
         registrations.each { sampleRegistration ->
-            updateSampleStatus.updateSample(sampleRegistration.sampleCode, sampleRegistration.modificationTime)
+            updateSampleStatus.updateSample(sampleRegistration.sampleCode, sampleRegistration.registrationTime)
         }
     }
 }
