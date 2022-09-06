@@ -36,7 +36,7 @@ class UpdateSampleStatusImpl implements UpdateSampleStatus {
     @Override
     def updateSample(String sampleCode, Instant timepoint) throws SampleUpdateException {
         try {
-            log.info(String.format("attempting registration of %s at %s", sampleCode, timepoint))
+            log.info("attempting registration of $sampleCode at $timepoint")
             service.registerSampleStatus(sampleCode, Status.METADATA_REGISTERED, timepoint)
             def updateResponse = new UpdateResponse(sampleCode: sampleCode, updateSuccessful: true)
             log.info(updateResponse)
