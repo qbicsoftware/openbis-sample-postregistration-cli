@@ -11,7 +11,7 @@
   </modules>
   <groupId>life.qbic</groupId>
   <artifactId>sample-status-updater-cli</artifactId>
-  <version>1.5.3</version>
+  <version>1.5.4</version>
   <name>sample status updater app</name>
   <url>https://github.com/qbicsoftware/sample-status-updater-cli</url>
   <description>Command-line utility to add the first location of sample tracking information
